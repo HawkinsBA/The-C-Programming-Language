@@ -1,8 +1,5 @@
 #include <stdio.h>
 
-#define IN  1
-#define OUT 0
-
 void draw_horizontal_histogram(int lengths[], int max_length) {
     for (int i = 1; i <= max_length; i++) {
         printf("%2d | ", i);
@@ -46,7 +43,7 @@ void draw_vertical_histogram(int lengths[], int max_length) {
 
 // A program which prints a vertical & horizontal histogram of the lengths of words in its input
 void main() {
-    int c, state, cur_word_length, max_word_length;
+    int c, cur_word_length, max_word_length;
     int word_lengths[50]; 
     /* Hopefully, we don't encounter a word longer than 50 characters. 
        The longest word in the Oxford English Dictionary, pneumonoultramicroscopicsilicovolcanoconiosis, is 45 characters.
@@ -55,7 +52,6 @@ void main() {
     for (int i = 0; i < 50; i++) {
         word_lengths[i] = 0;
     }
-    state = OUT;
     cur_word_length = 0;
 
     while ((c = getchar()) != EOF) {
@@ -64,11 +60,9 @@ void main() {
                 max_word_length = cur_word_length;
                 word_lengths[cur_word_length]++;
                 cur_word_length = 0;
-                state = OUT;
             }  else {
                 word_lengths[cur_word_length]++;
                 cur_word_length = 0;
-                state = OUT;
             }
         } else {
             cur_word_length++;
