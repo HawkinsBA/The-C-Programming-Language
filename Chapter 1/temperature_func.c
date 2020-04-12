@@ -10,6 +10,8 @@ int main() {
     for (int f = LOWER; f <= UPPER; f = f + STEP) {
         printf("%3d %6.1f\n", f, fahr_to_cel(f));
     }
+
+    return 0;
 }
 
 float fahr_to_cel(int f) {
